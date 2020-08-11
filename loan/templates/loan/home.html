@@ -1,0 +1,8 @@
+{% extends "loan/layout.html" %}
+{% block content %}
+    <div>
+     <form action="{% url 'loan-create' %}">
+            <button type="action" class="btn btn-secondary btn-lg btn-block" href="{% url 'loan-create' %}">Request loan</button>
+      </form>
+    </div>
+{% endblock %}
