@@ -13,3 +13,7 @@ class LoanCreationForm(forms.Form):
     gender = forms.ChoiceField(choices=gender_options)
     amount = forms.IntegerField()
 
+
+# When the user is already logged, we don't need some fields
+class LoanAlternCreationForm(forms.Form):
+    amount = forms.IntegerField()

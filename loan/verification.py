@@ -10,6 +10,5 @@ def ItsApproved(dni):
         json_format = json.loads(res.text)
         if json_format['status'] == 'approve' and not(json_format['has_error']):
             return True
-    else:
-        return False
+    return False
 
