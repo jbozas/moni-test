@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Loan
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from users.models import Profile
+from users.views import createMoniUser
 from .verification import ItsApproved
 from django.contrib.auth.models import User
 from .forms import LoanCreationForm, LoanAlternCreationForm
@@ -9,6 +11,7 @@ from django.views.generic import (DetailView, UpdateView, DeleteView)
 
 
 def home(request):
+    createMoniUser()
     return render(request, 'loan/home.html')
 
 

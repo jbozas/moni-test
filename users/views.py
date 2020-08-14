@@ -21,8 +21,16 @@ def save_profile(form, username):
     profile = Profile(user=User.objects.get(username=username), document=form.cleaned_data.get('document'), first_name=form.cleaned_data.get('first_name'), last_name=form.cleaned_data.get('last_name'), email=form.cleaned_data.get('email'), gender=form.cleaned_data.get('gender'))
     profile.save()
 
-def create_superusr():
-    us1 = User(first_name='Moni', last_name='Super User', username='admin', password='admin')
-    print(us1.first_name)
+def moniExists():
+    return User.objects.filter(username='moni').count() > 0
 
+
+def createMoniUser():
+    if(not moniExists()):
+        user = User.objects.create_user(
+            username='moni', first_name='Moni', last_name='Team', password='moni')
+        user.save()
+        profile = Profile(user=user, document='30712334610', first_name=user.first_name,
+                          last_name=user.last_name, email='https://moni.com.ar/', superuser=True)
+        profile.save()
 
