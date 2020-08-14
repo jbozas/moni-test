@@ -14,6 +14,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=254)
     gender = models.CharField(
         max_length=10, choices=gender_options, default="Other")
+    superuser = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.user.username} Profile'

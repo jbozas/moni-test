@@ -31,12 +31,14 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'loan-home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'loan-about' %}">About</a>
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'loan-list' %}">My cash Advances</a>
+              {% endif %}
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="#">{{user.first_name}}</a>
+                <a class="nav-item nav-link" href="#">Hi {{user.first_name}}!</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
               {% else %}
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
